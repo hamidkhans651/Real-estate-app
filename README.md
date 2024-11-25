@@ -1,29 +1,53 @@
-yarn add @emotion/react@^11.13.3
-yarn add @emotion/styled@^11.13.0
-yarn add @mui/icons-material@^6.1.0
-yarn add @mui/material@^6.1.0
-yarn add @nextui-org/react@^2.4.6
-yarn add algoliasearch@^5.4.3
-yarn add canvas-confetti@^1.9.3
-yarn add chart.js@^4.4.4
-yarn add firebase@^10.13.1
-yarn add firebase-admin@^12.5.0
-yarn add framer-motion@^11.5.4
-yarn add lucide-react@^0.439.0
-yarn add next@14.2.9
-yarn add react@^18
-yarn add react-chartjs-2@^5.2.0
-yarn add react-dom@^18
-yarn add react-hot-toast@^2.4.1
-yarn add react-quill@^2.0.0
-yarn add react-slick@^0.30.2
-yarn add slick-carousel@^1.8.1
-yarn add swr@^2.2.5
+# Next.js & NextUI Template
 
+This is a template for creating applications using Next.js 14 (app directory) and NextUI (v2).
 
+[Try it on CodeSandbox](https://githubbox.com/nextui-org/next-app-template)
 
-npm i aos
+## Technologies Used
 
-npm install react-scroll
+- [Next.js 14](https://nextjs.org/docs/getting-started)
+- [NextUI v2](https://nextui.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Tailwind Variants](https://tailwind-variants.org)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Framer Motion](https://www.framer.com/motion/)
+- [next-themes](https://github.com/pacocoursey/next-themes)
 
- npm i react-icons
+## How to Use
+
+### Use the template with create-next-app
+
+To create a new project based on this template using `create-next-app`, run the following command:
+
+```bash
+npx create-next-app -e https://github.com/nextui-org/next-app-template
+```
+
+### Install dependencies
+
+You can use one of them `npm`, `yarn`, `pnpm`, `bun`, Example using `npm`:
+
+```bash
+npm install
+```
+
+### Run the development server
+
+```bash
+npm run dev
+```
+
+### Setup pnpm (optional)
+
+If you are using `pnpm`, you need to add the following code to your `.npmrc` file:
+
+```bash
+public-hoist-pattern[]=*@nextui-org/*
+```
+
+After modifying the `.npmrc` file, you need to run `pnpm install` again to ensure that the dependencies are installed correctly.
+
+## License
+
+Licensed under the [MIT license](https://github.com/nextui-org/next-app-template/blob/main/LICENSE).
