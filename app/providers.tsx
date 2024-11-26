@@ -1,5 +1,5 @@
 "use client";
-
+import { ChakraProvider } from '@chakra-ui/react'
 import * as React from "react";
 import { NextUIProvider } from "@nextui-org/system";
 import { useRouter } from "next/navigation";
@@ -18,5 +18,7 @@ export function Providers({ children, themeProps }: ProvidersProps) {
     <NextUIProvider navigate={router.push}>
       <NextThemesProvider {...themeProps}>{children}</NextThemesProvider>
     </NextUIProvider>
+
   );
 }
+
