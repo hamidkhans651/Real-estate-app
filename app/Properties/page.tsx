@@ -7,47 +7,47 @@ import { Card, CardBody, CardFooter, Image } from "@nextui-org/react";
 
 const heroCards = [
   {
-    title: "Luxury Villa",
-    img: "/images/property-1.jpg",
+    title: "Luxury hamis Villa",
+    img: "/assets/images/prop3.webp",
     price: "$2,000,000",
   },
   {
     title: "Modern Apartment",
-    img: "/images/property-2.jpg",
+    img: "/assets/images/prop3.webp",
     price: "$1,500,000",
   },
   {
     title: "Cozy Cottage",
-    img: "/images/property-3.jpg",
+    img: "/assets/images/prop3.webp",
     price: "$700,000",
   },
   {
     title: "Cozy Cottage",
-    img: "/images/property-3.jpg",
+    img: "/assets/images/prop3.webp",
     price: "$700,000",
   }, {
     title: "Cozy Cottage",
-    img: "/images/property-3.jpg",
+    img: "/assets/images/prop2.webp",
     price: "$700,000",
   },
   {
     title: "Cozy Cottage",
-    img: "/images/property-3.jpg",
+    img: "/assets/images/prop3.webp",
     price: "$700,000",
   },
   {
     title: "Cozy Cottage",
-    img: "/images/property-3.jpg",
+    img: "/assets/images/prop4.webp",
     price: "$700,000",
   },
   {
     title: "Cozy Cottage",
-    img: "/images/property-3.jpg",
+    img: "/assets/images/prop5.webp",
     price: "$700,000",
   },
   {
     title: "Cozy Cottage",
-    img: "/images/property-3.jpg",
+    img: "/assets/images/prop6.webp",
     price: "$700,000",
   },
 ];
@@ -59,7 +59,7 @@ export default function Hero() {
 
   return (
     <main>
-      <div className="rounded-2xl flex justify-center items-center text-white pb-20">
+      <div className="rounded-2xl flex justify-center items-center text-white pb-4">
         <Input
           label="Search"
           isClearable
@@ -91,7 +91,7 @@ export default function Hero() {
           }
         />
       </div>
-      <div className="gap-5 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 border-white">
+      <div className="gap-5 grid grid-cols-1  sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {heroCards.map((card, index) => (
           <Card shadow="sm" key={index} isPressable>
             <CardBody className="overflow-visible p-0">
