@@ -28,7 +28,23 @@ const heroCards = [
     title: "Cozy Cottage",
     img: "/images/property-3.jpg",
     price: "$700,000",
-  }, {
+  },
+  {
+    title: "Cozy Cottage",
+    img: "/images/property-3.jpg",
+    price: "$700,000",
+  },
+  {
+    title: "Cozy Cottage",
+    img: "/images/property-3.jpg",
+    price: "$700,000",
+  },
+  {
+    title: "Cozy Cottage",
+    img: "/images/property-3.jpg",
+    price: "$700,000",
+  },
+  {
     title: "Cozy Cottage",
     img: "/images/property-3.jpg",
     price: "$700,000",
