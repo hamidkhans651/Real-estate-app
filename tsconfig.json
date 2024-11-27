@@ -23,6 +23,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "components/Sections/Mid.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "components/Sections/Mid.tsx", "app/Properties/icons/HeartIcon.jsx", "app/Properties/page.tsx"],
   "exclude": ["node_modules"]
 }

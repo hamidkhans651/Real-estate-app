@@ -2,8 +2,13 @@
 
 
 import { Input } from "@nextui-org/react";
-import { SearchIcon } from "./SearchIcon";
+import { SearchIcon } from "./icons/SearchIcon";
 import { Card, CardBody, CardFooter, Image } from "@nextui-org/react";
+import { Button } from "@nextui-org/react";
+import { HeartIcon } from './icons/HeartIcon';
+
+
+
 
 const heroCards = [
   {
@@ -93,7 +98,9 @@ export default function Hero() {
       </div>
       <div className="gap-5 grid grid-cols-1  sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {heroCards.map((card, index) => (
-          <Card shadow="sm" key={index} isPressable>
+
+
+          <Card shadow="sm" key={index} isPressable className="relative">
             <CardBody className="overflow-visible p-0">
               <Image
                 shadow="sm"
@@ -103,6 +110,14 @@ export default function Hero() {
                 className="w-full object-cover h-[200px]"
                 src={card.img}
               />
+              <Button
+                isIconOnly
+                color="danger"
+                aria-label="Like"
+                className="absolute top-2 right-2 z-10" // Positioning the button
+              >
+                <HeartIcon size={20} />
+              </Button>
             </CardBody>
             <CardFooter className="text-small justify-between">
               <b>{card.title}</b>
@@ -111,6 +126,8 @@ export default function Hero() {
           </Card>
         ))}
       </div>
+
+
 
 
 
