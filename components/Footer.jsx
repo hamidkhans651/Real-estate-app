@@ -47,12 +47,12 @@ const footer = () => {
                                         <linearGradient id="paint0_linear_9129_4680" x1="35" y1="1.89063" x2="1.11152" y2="33.4573"
                                             gradientUnits="userSpaceOnUse">
                                             <stop stopColor="#7C3AED"></stop>
-                                            <stop offset="0.993738" stop-color="#4F46E5"></stop>
+                                            <stop offset="0.993738" stopColor="#4F46E5"></stop>
                                         </linearGradient>
                                         <linearGradient id="paint1_linear_9129_4680" x1="35" y1="1.89063" x2="1.11152" y2="33.4573"
                                             gradientUnits="userSpaceOnUse">
                                             <stop stopColor="#7C3AED"></stop>
-                                            <stop offset="0.993738" stop-color="#4F46E5"></stop>
+                                            <stop offset="0.993738" stoColor="#4F46E5"></stop>
                                         </linearGradient>
                                     </defs>
                                 </svg>

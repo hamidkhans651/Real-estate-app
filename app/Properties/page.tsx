@@ -1,66 +1,89 @@
 'use client'
 
-
-import { Input } from "@nextui-org/react";
+import { useState, useEffect } from "react";
+import { Input, Pagination, PaginationItemRenderProps, PaginationItemType } from "@nextui-org/react";
 import { SearchIcon } from "./icons/SearchIcon";
-import { Card, CardBody, CardFooter, Image } from "@nextui-org/react";
-import { Button } from "@nextui-org/react";
+import { Card, CardBody, CardFooter, Image, Button } from "@nextui-org/react";
 import { HeartIcon } from './icons/HeartIcon';
-
-
-
+import { ChevronIcon } from "./icons/ChevronIcon";
 
 const heroCards = [
-  {
-    title: "Luxury hamis Villa",
-    img: "/assets/images/prop3.webp",
-    price: "$2,000,000",
-  },
-  {
-    title: "Modern Apartment",
-    img: "/assets/images/prop3.webp",
-    price: "$1,500,000",
-  },
-  {
-    title: "Cozy Cottage",
-    img: "/assets/images/prop3.webp",
-    price: "$700,000",
-  },
-  {
-    title: "Cozy Cottage",
-    img: "/assets/images/prop3.webp",
-    price: "$700,000",
-  }, {
-    title: "Cozy Cottage",
-    img: "/assets/images/prop2.webp",
-    price: "$700,000",
-  },
-  {
-    title: "Cozy Cottage",
-    img: "/assets/images/prop3.webp",
-    price: "$700,000",
-  },
-  {
-    title: "Cozy Cottage",
-    img: "/assets/images/prop4.webp",
-    price: "$700,000",
-  },
-  {
-    title: "Cozy Cottage",
-    img: "/assets/images/prop5.webp",
-    price: "$700,000",
-  },
-  {
-    title: "Cozy Cottage",
-    img: "/assets/images/prop6.webp",
-    price: "$700,000",
-  },
+  { title: "Luxury hamis Villa", img: "/assets/images/prop3.webp", price: "$2,000,000" },
+  { title: "Modern Apartment", img: "/assets/images/prop3.webp", price: "$1,500,000" },
+  { title: "Cozy Cottage", img: "/assets/images/prop3.webp", price: "$700,000" },
+  { title: "Cozy Cottage", img: "/assets/images/prop3.webp", price: "$700,000" },
+  { title: "Cozy Cottage", img: "/assets/images/prop2.webp", price: "$700,000" },
+  { title: "Cozy Cottage", img: "/assets/images/prop3.webp", price: "$700,000" },
+  { title: "Cozy Cottage", img: "/assets/images/prop3.webp", price: "$700,000" },
+  { title: "Cozy Cottage", img: "/assets/images/prop3.webp", price: "$700,000" },
+  { title: "Cozy Cottage", img: "/assets/images/prop3.webp", price: "$700,000" },
+  { title: "Cozy Cottage", img: "/assets/images/prop3.webp", price: "$700,000" },
+  { title: "Cozy Cottage", img: "/assets/images/prop3.webp", price: "$700,000" },
+  { title: "Cozy Cottage", img: "/assets/images/prop3.webp", price: "$700,000" },
+  { title: "Cozy Cottage", img: "/assets/images/prop3.webp", price: "$700,000" },
+    { title: "Cozy Cottage", img: "/assets/images/prop3.webp", price: "$700,000" },
+  { title: "Cozy Cottage", img: "/assets/images/prop4.webp", price: "$700,000" },
+  { title: "Cozy Cottage", img: "/assets/images/prop5.webp", price: "$700,000" },
+  { title: "Cozy Cottage", img: "/assets/images/prop6.webp", price: "$700,000" },
+  { title: "Charming Bungalow", img: "/assets/images/prop1.webp", price: "$850,000" },
+  { title: "Spacious Condo", img: "/assets/images/prop7.webp", price: "$1,200,000" },
+  { title: "Beachfront Villa", img: "/assets/images/prop8.webp", price: "$3,000,000" },
+  { title: "Penthouse Suite", img: "/assets/images/prop9.webp", price: "$2,500,000" },
+  { title: "Mountain Retreat", img: "/assets/images/prop10.webp", price: "$950,000" },
+  { title: "Urban Loft", img: "/assets/images/prop11.webp", price: "$1,000,000" },
+  { title: "Luxury Mansion", img: "/assets/images/prop12.webp", price: "$4,500,000" },
 ];
 
 export default function Hero() {
+  const [currentPage, setCurrentPage] = useState(1);
+  const [propertiesToShow, setPropertiesToShow] = useState(heroCards.slice(0, 10));
 
+  // Update properties when the page changes
+  useEffect(() => {
+    const start = (currentPage - 1) * 10;
+    const end = start + 10;
+    setPropertiesToShow(heroCards.slice(start, end));
+  }, [currentPage]);
 
+  const renderItem = ({
+    key,
+    value,
+    isActive,
+    onNext,
+    onPrevious,
+    setPage,
+    className,
+  }: PaginationItemRenderProps) => {
+    if (value === PaginationItemType.NEXT) {
+      return (
+        <button key={key} className={className} onClick={onNext}>
+          <ChevronIcon className="rotate-180" />
+        </button>
+      );
+    }
 
+    if (value === PaginationItemType.PREV) {
+      return (
+        <button key={key} className={className} onClick={onPrevious}>
+          <ChevronIcon />
+        </button>
+      );
+    }
+
+    if (value === PaginationItemType.DOTS) {
+      return <button key={key} className={className}>...</button>;
+    }
+
+    return (
+      <button
+        key={key}
+        className={`${className} ${isActive ? "text-white bg-gradient-to-br from-indigo-500 to-pink-500 font-bold" : ""}`}
+        onClick={() => setPage(value)}
+      >
+        {value}
+      </button>
+    );
+  };
 
   return (
     <main>
@@ -96,10 +119,10 @@ export default function Hero() {
           }
         />
       </div>
-      <div className="gap-5 grid grid-cols-1  sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-        {heroCards.map((card, index) => (
 
-
+      {/* Displaying properties */}
+      <div className="gap-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+        {propertiesToShow.map((card, index) => (
           <Card shadow="sm" key={index} isPressable className="relative">
             <CardBody className="overflow-visible p-0">
               <Image
@@ -114,7 +137,7 @@ export default function Hero() {
                 isIconOnly
                 color="danger"
                 aria-label="Like"
-                className="absolute top-2 right-2 z-10" // Positioning the button
+                className="absolute top-2 right-2 z-10"
               >
                 <HeartIcon size={20} />
               </Button>
@@ -127,11 +150,18 @@ export default function Hero() {
         ))}
       </div>
 
-
-
-
-
+      {/* Pagination Controls */}
+      <Pagination
+        disableCursorAnimation
+        showControls
+        total={Math.ceil(heroCards.length / 10)}  // Total pages
+        initialPage={1}
+        className="gap-2 mt-4"
+        radius="full"
+        renderItem={renderItem}
+        variant="light"
+        onChange={setCurrentPage}  // Update page when changed
+      />
     </main>
-
   );
 }
