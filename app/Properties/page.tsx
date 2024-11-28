@@ -4,8 +4,11 @@ import { useState, useEffect } from "react";
 import { Input, Pagination, PaginationItemRenderProps, PaginationItemType } from "@nextui-org/react";
 import { SearchIcon } from "./icons/SearchIcon";
 import { Card, CardBody, CardFooter, Image, Button } from "@nextui-org/react";
+import { Autocomplete, AutocompleteItem } from "@nextui-org/react";
 import { HeartIcon } from './icons/HeartIcon';
 import { ChevronIcon } from "./icons/ChevronIcon";
+import { animals } from "./Data";
+import Radiobutto from "./Radiobutton";
 
 const heroCards = [
   { title: "Luxury hamis Villa", img: "/assets/images/prop3.webp", price: "$2,000,000" },
@@ -21,7 +24,7 @@ const heroCards = [
   { title: "Cozy Cottage", img: "/assets/images/prop3.webp", price: "$700,000" },
   { title: "Cozy Cottage", img: "/assets/images/prop3.webp", price: "$700,000" },
   { title: "Cozy Cottage", img: "/assets/images/prop3.webp", price: "$700,000" },
-    { title: "Cozy Cottage", img: "/assets/images/prop3.webp", price: "$700,000" },
+  { title: "Cozy Cottage", img: "/assets/images/prop3.webp", price: "$700,000" },
   { title: "Cozy Cottage", img: "/assets/images/prop4.webp", price: "$700,000" },
   { title: "Cozy Cottage", img: "/assets/images/prop5.webp", price: "$700,000" },
   { title: "Cozy Cottage", img: "/assets/images/prop6.webp", price: "$700,000" },
@@ -88,6 +91,24 @@ export default function Hero() {
   return (
     <main>
       <div className="rounded-2xl flex justify-center items-center text-white pb-4">
+        <div className="flex mr-4 flex-wrap md:flex-nowrap ">
+          <Autocomplete
+            label="Favorite Animal"
+            placeholder="Search an property"
+            className="max-w-xs"
+            defaultItems={animals}
+            listboxProps={{
+              emptyContent: 'Your own empty content text.'
+            }}
+            
+          >
+            {(item) => <AutocompleteItem key={item.value}>{item.label}</AutocompleteItem>}
+       
+          </Autocomplete>
+       
+  
+
+        </div>
         <Input
           label="Search"
           isClearable

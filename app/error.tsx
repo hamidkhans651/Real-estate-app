@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import { Button } from "@nextui-org/button";
 
 export default function Error({
   error,
@@ -18,14 +19,14 @@ export default function Error({
   return (
     <div>
       <h2>Something went wrong!</h2>
-      <button
+      <Button
         onClick={
           // Attempt to recover by trying to re-render the segment
           () => reset()
         }
       >
         Try again
-      </button>
+      </Button>
     </div>
   );
 }
