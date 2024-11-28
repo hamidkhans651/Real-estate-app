@@ -35,16 +35,16 @@ export const siteConfig = {
       href: "/dashboard",
     },
     {
-      label: "Projects",
-      href: "/projects",
+      label: "Properties",
+      href: "/Properties",
     },
     {
-      label: "Team",
-      href: "/team",
+      label: "Agents",
+      href: "/agent",
     },
     {
-      label: "Calendar",
-      href: "/calendar",
+      label: "About",
+      href: "/about",
     },
     {
       label: "Settings",

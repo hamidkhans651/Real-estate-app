@@ -8,11 +8,11 @@ import { Autocomplete, AutocompleteItem } from "@nextui-org/react";
 import { HeartIcon } from './icons/HeartIcon';
 import { ChevronIcon } from "./icons/ChevronIcon";
 import { animals } from "./Data";
-import Radiobutto from "./Radiobutton";
+import ImageSlidder from "./components/ImageSlidder"
 
 const heroCards = [
-  { title: "Luxury hamis Villa", img: "/assets/images/prop3.webp", price: "$2,000,000" },
-  { title: "Modern Apartment", img: "/assets/images/prop3.webp", price: "$1,500,000" },
+  { seller: "TARRANT AND HARMAN REAL ESTATE", img: "/assets/images/prop3.webp", price: "$2,000,000", address: "7753 S Sawyer Ave, chicago,IL 60652", bed: "2 bed 2 bath  1200 SQ FT" },
+  { title: "TARRANT AND HARMAN REAL ESTATE", img: "/assets/images/prop3.webp", price: "$1,500,000" },
   { title: "Cozy Cottage", img: "/assets/images/prop3.webp", price: "$700,000" },
   { title: "Cozy Cottage", img: "/assets/images/prop3.webp", price: "$700,000" },
   { title: "Cozy Cottage", img: "/assets/images/prop2.webp", price: "$700,000" },
@@ -93,20 +93,18 @@ export default function Hero() {
       <div className="rounded-2xl flex justify-center items-center text-white pb-4">
         <div className="flex mr-4 flex-wrap md:flex-nowrap ">
           <Autocomplete
-            label="Favorite Animal"
+            label="Filters"
             placeholder="Search an property"
             className="max-w-xs"
             defaultItems={animals}
             listboxProps={{
               emptyContent: 'Your own empty content text.'
             }}
-            
+
           >
             {(item) => <AutocompleteItem key={item.value}>{item.label}</AutocompleteItem>}
-       
+
           </Autocomplete>
-       
-  
 
         </div>
         <Input
@@ -145,27 +143,42 @@ export default function Hero() {
       <div className="gap-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {propertiesToShow.map((card, index) => (
           <Card shadow="sm" key={index} isPressable className="relative">
-            <CardBody className="overflow-visible p-0">
-              <Image
-                shadow="sm"
-                radius="lg"
-                width="100%"
-                alt={card.title}
-                className="w-full object-cover h-[200px]"
-                src={card.img}
-              />
-              <Button
-                isIconOnly
-                color="danger"
-                aria-label="Like"
-                className="absolute top-2 right-2 z-10"
-              >
-                <HeartIcon size={20} />
-              </Button>
+
+            <Image
+              shadow="sm"
+              radius="lg"
+              width="100%"
+              alt={card.bed}
+              className="w-full object-cover h-[200px]"
+              src={card.img}
+
+            />
+ 
+            <Button
+              isIconOnly
+              color="danger"
+              aria-label="Like"
+              className="absolute top-2 right-2 z-10"
+            >
+              <HeartIcon size={20} />
+
+            </Button>
+            <span className="absolute pt-36 left-24 z-10">
+            <ImageSlidder  />
+            </span>
+
+            <CardBody className="overflow-visible p-3">
+           
+
+              <p className=" text-xl text-start">{card.price}</p>
+              <p className="p-2 text-sm text-start">{card.bed}</p>
+
+              <b className="p-1 text-md  text-default-500 ">{card.address}</b>
+
             </CardBody>
             <CardFooter className="text-small justify-between">
-              <b>{card.title}</b>
-              <p className="text-default-500">{card.price}</p>
+
+              <b className="text-xs text-start  text-default-500 ">{card.seller}</b>
             </CardFooter>
           </Card>
         ))}
