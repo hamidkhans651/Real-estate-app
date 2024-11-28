@@ -155,6 +155,7 @@ export default function Hero() {
             />
  
             <Button
+            size="sm"
               isIconOnly
               color="danger"
               aria-label="Like"
