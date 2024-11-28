@@ -140,7 +140,7 @@ export default function Hero() {
       </div>
 
       {/* Displaying properties */}
-      <div className="gap-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+      <div className=" gap-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {propertiesToShow.map((card, index) => (
           <Card shadow="sm" key={index} isPressable className="relative">
 
@@ -149,7 +149,7 @@ export default function Hero() {
               radius="lg"
               width="100%"
               alt={card.bed}
-              className="w-full object-cover h-[200px]"
+              className="w-full object-cover h-100%"
               src={card.img}
 
             />
@@ -163,9 +163,9 @@ export default function Hero() {
               <HeartIcon size={20} />
 
             </Button>
-            <span className="absolute pt-36 left-24 z-10">
+            {/* <span className="absolute pt-36 left-24 z-10">
             <ImageSlidder  />
-            </span>
+            </span> */}
 
             <CardBody className="overflow-visible p-3">
            

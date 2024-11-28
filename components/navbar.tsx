@@ -1,3 +1,4 @@
+'use client'
 
 import {
   Navbar as NextUINavbar,
@@ -16,14 +17,7 @@ import NextLink from "next/link";
 import clsx from "clsx";
 import { siteConfig } from "@/config/site";
 import { ThemeSwitch } from "@/components/theme-switch";
-import {
-
-  SearchIcon,
-  Logo,
-} from "@/components/icons";
-
-
-
+import { SearchIcon, Logo } from "@/components/icons";
 
 export const Navbar = () => {
   const searchInput = (
@@ -47,6 +41,7 @@ export const Navbar = () => {
 
   return (
     <NextUINavbar maxWidth="xl" position="sticky">
+      {/* Left-side Branding */}
       <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
         <NavbarBrand as="li" className="gap-3 max-w-fit">
           <NextLink className="flex justify-start items-center gap-1" href="/">
@@ -54,6 +49,8 @@ export const Navbar = () => {
             <p className="font-bold text-inherit">ACME</p>
           </NextLink>
         </NavbarBrand>
+
+        {/* Navbar Links (Desktop) */}
         <ul className="hidden lg:flex gap-4 justify-start ml-2">
           {siteConfig.navItems.map((item) => (
             <NavbarItem key={item.href}>
@@ -72,23 +69,33 @@ export const Navbar = () => {
         </ul>
       </NavbarContent>
 
-      <NavbarContent
-        className="hidden sm:flex basis-1/5 sm:basis-full"
-        justify="end"
-      >
+      {/* Right-side Content (Theme switch, search, etc.) */}
+      <NavbarContent className="hidden sm:flex basis-1/5 sm:basis-full" justify="end">
+        {/* Theme Switcher */}
         <NavbarItem className="hidden sm:flex gap-2">
           <ThemeSwitch />
         </NavbarItem>
-        <NavbarItem className="hidden lg:flex">{searchInput}</NavbarItem>
+
+        {/* Search Input (Desktop) */}
+        <NavbarItem className="hidden lg:flex">
+          {searchInput}
+        </NavbarItem>
       </NavbarContent>
 
+      {/* Mobile View */}
       <NavbarContent className="sm:hidden basis-1 pl-4" justify="end">
+        {/* Mobile Theme Switch */}
         <ThemeSwitch />
+        {/* Mobile Menu Toggle */}
         <NavbarMenuToggle />
       </NavbarContent>
 
+      {/* Mobile Menu */}
       <NavbarMenu>
+        {/* Mobile Search Input */}
         {searchInput}
+
+        {/* Mobile Navbar Links */}
         <div className="mx-4 mt-2 flex flex-col gap-2">
           {siteConfig.navMenuItems.map((item, index) => (
             <NavbarMenuItem key={`${item}-${index}`}>
@@ -100,8 +107,7 @@ export const Navbar = () => {
                     ? "danger"
                     : "foreground"
                 }
-                href="#"
-                size="lg"
+                href={item.href}
               >
                 {item.label}
               </Link>
