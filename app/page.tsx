@@ -1,23 +1,9 @@
-
 import { title, subtitle } from "@/components/primitives";
-import {
-  Navbar as NextUINavbar,
-  NavbarContent,
-  NavbarMenu,
-  NavbarMenuToggle,
-  NavbarBrand,
-  NavbarItem,
-  NavbarMenuItem,
-} from "@nextui-org/navbar";
-
 import { SearchIcon,  } from "@/components/icons";
-
-import Midsections from "../components/Midsections"
 import { Kbd } from "@nextui-org/kbd";
-
 import { Input } from "@nextui-org/input";
 
-
+ 
 
 
 export default function Home() {
@@ -39,8 +25,8 @@ export default function Home() {
       type="search"
     />);
   return (
-    <main className="" >
-      <section className=" flex flex-col items-center justify-center gap-4 py-8 md:py-10 bg-cover bg-center " style={{ backgroundImage: 'url(/assets/images/prop3.webp)' }} >
+    <main className="w-full" >
+      <section className="w-full flex flex-col items-center justify-center gap-4 py-8 md:py-10 bg-cover bg-center " style={{ backgroundImage: 'url(/assets/images/prop3.webp)' }} >
         <div className="inline-block max-w-xl text-center justify-center pt-16 ">
           <span className={title()}>Make&nbsp;</span>
           <span className={title({ color: "violet" })}>beautiful&nbsp;</span>
@@ -63,7 +49,7 @@ export default function Home() {
 
         </div>
       </section>
-      <Midsections />
+     
     </main>
   );
 }

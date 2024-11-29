@@ -4,6 +4,7 @@ import clsx from "clsx";
 import { Providers } from "./providers";
 import Footer from "@/components/Footer"
 import { siteConfig } from "@/config/site";
+import Midsections from "../components/Midsections"
 import { fontSans } from "@/config/fonts";
 import { Navbar } from "@/components/navbar";
 
@@ -45,7 +46,7 @@ export default function RootLayout({
             <main className="container mx-auto max-w-7xl  flex-grow">
               {children}
             </main>
-            
+            <Midsections />
             <Footer />
           </div>
         </Providers>
