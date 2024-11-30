@@ -2,12 +2,12 @@ import "@/styles/globals.css";
 import { Metadata, Viewport } from "next";
 import clsx from "clsx";
 import { Providers } from "./providers";
-import Footer from "@/components/Footer"
+import Footer from "@/components/Footer";
 import { siteConfig } from "@/config/site";
-import Midsections from "../components/Midsections"
 import { fontSans } from "@/config/fonts";
 import { Navbar } from "@/components/navbar";
 
+// Set metadata for light and dark theme color scheme
 export const metadata: Metadata = {
   title: {
     default: siteConfig.name,
@@ -19,6 +19,7 @@ export const metadata: Metadata = {
   },
 };
 
+// Viewport for theme colors based on light/dark mode
 export const viewport: Viewport = {
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "white" },
@@ -37,18 +38,18 @@ export default function RootLayout({
       <body
         className={clsx(
           "min-h-screen bg-background font-sans antialiased",
-          fontSans.variable,
+          fontSans.variable
         )}
       >
         <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
-          <div className="relative flex flex-col h-screen">
-            <Navbar />
-            <main className="container mx-auto max-w-7xl  flex-grow">
-              {children}
-            </main>
-            <Midsections />
-            <Footer />
-          </div>
+          {/* Add your Navbar */}
+          <Navbar />
+
+          {/* Main content */}
+          <main>{children}</main>
+
+          {/* Footer */}
+          <Footer />
         </Providers>
       </body>
     </html>

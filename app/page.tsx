@@ -1,10 +1,8 @@
 import { title, subtitle } from "@/components/primitives";
-import { SearchIcon,  } from "@/components/icons";
+import { SearchIcon } from "@/components/icons";
 import { Kbd } from "@nextui-org/kbd";
 import { Input } from "@nextui-org/input";
-
- 
-
+import Midsections from "../components/Midsections";
 
 export default function Home() {
   const searchInput = (
@@ -23,11 +21,16 @@ export default function Home() {
         <SearchIcon className="text-base text-default-400 pointer-events-none flex-shrink-0" />
       }
       type="search"
-    />);
+    />
+  );
   return (
-    <main className="w-full" >
-      <section className="w-full flex flex-col items-center justify-center gap-4 py-8 md:py-10 bg-cover bg-center " style={{ backgroundImage: 'url(/assets/images/prop3.webp)' }} >
-        <div className="inline-block max-w-xl text-center justify-center pt-16 ">
+    <main className="w-full min-h-screen">
+      {/* Section with background image and text */}
+      <section
+        className="w-full h-screen flex flex-col items-center justify-center gap-4 bg-cover bg-center"
+        style={{ backgroundImage: 'url(/assets/images/prop3.webp)' }}
+      >
+        <div className="inline-block max-w-xl text-center pt-16">
           <span className={title()}>Make&nbsp;</span>
           <span className={title({ color: "violet" })}>beautiful&nbsp;</span>
           <br />
@@ -35,21 +38,16 @@ export default function Home() {
             websites regardless of your design experience.
           </span>
           <div className={subtitle({ class: "mt-4" })}>
-            Beautiful, fast and modern React UI library.
+            Beautiful, fast, and modern React UI library.
           </div>
         </div>
 
-        <div className="flex gap-3">
-
-        </div>
-
-        <div className="mt-8">
-          {/* Search Input (Desktop) */}
-          {searchInput}
-
-        </div>
+        {/* Your search input */}
+        <div className="mt-8">{searchInput}</div>
       </section>
-     
+
+      {/* Midsections or additional content below the hero */}
+      <Midsections />
     </main>
   );
 }
