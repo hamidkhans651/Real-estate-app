@@ -4,7 +4,6 @@ import React from 'react'
 import { useState } from 'react';
 import { useTheme } from 'next-themes';  // Import useTheme from next-themes
 
-import { ThemeSwitch } from "@/components/theme-switch";
 
 const Midsections = () => {
   const { theme } = useTheme();  // Get the current theme (light or dark)
@@ -76,8 +75,9 @@ const Midsections = () => {
         </div>
       </section>
 
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
-        <div className="container mx-auto flex flex-col lg:flex-row items-center justify-between gap-8">
+      <section
+        className={`py-16 px-4 sm:px-6 lg:px-8 ${theme === 'dark' ? 'bg-black-900 text-white border-white' : 'bg-gray-100 text-black border-black'}`}  // Apply conditional styling based on theme
+      >        <div className="container mx-auto flex flex-col lg:flex-row items-center justify-between gap-8">
           {/* Left side - Image */}
           <div className="flex-shrink-0 w-full lg:w-1/2">
             <img
@@ -89,10 +89,10 @@ const Midsections = () => {
 
           {/* Right side - Text Content */}
           <div className="text-center lg:text-left lg:w-1/2">
-            <h2 className="text-3xl font-semibold text-gray-800 mb-4">
+            <h2 className="text-3xl font-semibold  mb-4">
               Start touring homes, no strings attached
             </h2>
-            <p className="text-gray-600 mb-6">
+            <p className=" mb-6">
               Unlike many other agents, Redfin agents won't ask you to sign an exclusive commitment before they'll take you on a first tour.
             </p>
             <a
@@ -104,14 +104,15 @@ const Midsections = () => {
           </div>
         </div>
       </section>
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50">
-        <div className="container mx-auto flex flex-col lg:flex-row items-center justify-between gap-8">
+      <section
+        className={`py-16 px-4 sm:px-6 lg:px-8 ${theme === 'dark' ? 'bg-black-900 text-white border-white' : 'bg-gray-100 text-black border-black'}`}  // Apply conditional styling based on theme
+      >        <div className="container mx-auto flex flex-col lg:flex-row items-center justify-between gap-8">
           {/* Left side - Heading and Paragraph */}
           <div className="text-center lg:text-left lg:w-1/2">
-            <h2 className="text-4xl font-bold text-gray-800 mb-4">
+            <h2 className="text-4xl font-bold  mb-4">
               Talk to a Redfin agent
             </h2>
-            <p className="text-gray-600 mb-6">
+            <p className=" mb-6">
               You’ll be connected with an expert local agent—there’s no pressure or obligation.
             </p>
           </div>
@@ -120,7 +121,7 @@ const Midsections = () => {
           <div className="lg:w-1/2 w-full">
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
-                <label htmlFor="location" className="block text-sm font-semibold text-gray-700 mb-2">Where are you searching for homes?</label>
+                <label htmlFor="location" className="block text-sm font-semibold  mb-2">Where are you searching for homes?</label>
                 <input
                   type="text"
                   id="location"
@@ -132,7 +133,7 @@ const Midsections = () => {
               </div>
 
               <div>
-                <label htmlFor="email" className="block text-sm font-semibold text-gray-700 mb-2">Email</label>
+                <label htmlFor="email" className="block text-sm font-semibold  mb-2">Email</label>
                 <input
                   type="email"
                   id="email"
@@ -144,20 +145,20 @@ const Midsections = () => {
               </div>
 
               <div>
-                <label htmlFor="phone" className="block text-sm font-semibold text-gray-700 mb-2">Phone</label>
+                <label htmlFor="phone" className="block text-sm font-semibold  mb-2">Phone</label>
                 <input
                   type="tel"
                   id="phone"
                   name="phone"
                   value={formData.phone}
                   onChange={handleChange}
-                  placeholder="(      )      -"
+                  placeholder=""
                   className="w-full p-3 border rounded-md border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
               </div>
 
               <div>
-                <label htmlFor="helpWith" className="block text-sm font-semibold text-gray-700 mb-2">What can we help you with?</label>
+                <label htmlFor="helpWith" className="block text-sm font-semibold  mb-2">What can we help you with?</label>
                 <textarea
                   id="helpWith"
                   name="helpWith"
@@ -168,7 +169,7 @@ const Midsections = () => {
                 />
               </div>
 
-              <button type="submit" className="w-full bg-blue-600 text-white p-3 rounded-md hover:bg-blue-700 transition duration-300">
+              <button type="submit" className="w-full bg-blue-600  p-3 rounded-md hover:bg-blue-700 transition duration-300">
                 Submit
               </button>
 
