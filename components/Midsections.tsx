@@ -37,7 +37,7 @@ const Midsections = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* Card 1 - Buy */}
             <div className="  border-solid border-2 shadow-2xl rounded-lg p-6 flex flex-col items-center text-center"
-          >
+            >
               <img src="/assets/images/redfinagent.png" alt="Buy" className="w-16 h-16 mb-4" />
               <h3 className="text-xl font-semibold  mb-4">Buy</h3>
               <p className=" mb-6">
@@ -121,31 +121,31 @@ const Midsections = () => {
           <div className="lg:w-1/2 w-full">
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
-                <label htmlFor="location" className="block text-sm font-semibold  mb-2">Where are you searching for homes?</label>
+                <label htmlFor="location" className="block text-sm font-semibold  mb-2 focus:outline-none">Where are you searching for homes?</label>
                 <input
                   type="text"
                   id="location"
                   name="location"
                   value={formData.location}
                   onChange={handleChange}
-                  className="w-full p-3 border rounded-md border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full p-3 border rounded-md  focus:outline-none  "
                 />
               </div>
 
               <div>
-                <label htmlFor="email" className="block text-sm font-semibold  mb-2">Email</label>
+                <label htmlFor="email" className="block text-sm font-semibold mb-2">Email</label>
                 <input
                   type="email"
                   id="email"
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  className="w-full p-3 border rounded-md border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full p-3 border rounded-md  focus:outline-none "
                 />
               </div>
 
               <div>
-                <label htmlFor="phone" className="block text-sm font-semibold  mb-2">Phone</label>
+                <label htmlFor="phone" className="block text-sm font-semibold  focus:outline-none mb-2">Phone</label>
                 <input
                   type="tel"
                   id="phone"
@@ -153,7 +153,7 @@ const Midsections = () => {
                   value={formData.phone}
                   onChange={handleChange}
                   placeholder=""
-                  className="w-full p-3 border rounded-md border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full p-3 border rounded-md  focus:outline-none "
                 />
               </div>
 
@@ -164,7 +164,7 @@ const Midsections = () => {
                   name="helpWith"
                   value={formData.helpWith}
                   onChange={handleChange}
-                  className="w-full p-3 border rounded-md border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full p-3 border rounded-md  focus:outline-none "
                   rows={4}
                 />
               </div>
@@ -173,7 +173,7 @@ const Midsections = () => {
                 Submit
               </button>
 
-              <p className="text-xs text-gray-500 mt-2">
+              <p className="text-xs 500 mt-2">
                 You are creating a Redfin account and agree to our <a href="#" className="text-blue-500">privacy and policy</a>.
               </p>
             </form>

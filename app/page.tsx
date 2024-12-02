@@ -30,14 +30,14 @@ export default function Home() {
         className="w-full h-screen flex flex-col items-center justify-center gap-4 bg-cover bg-center"
         style={{ backgroundImage: 'url(/assets/images/prop3.webp)' }}
       >
-        <div className="inline-block max-w-xl text-center pt-16">
+        <div className="inline-block max-w-xl text-center pt-16 text-white">
           <span className={title()}>Make&nbsp;</span>
           <span className={title({ color: "violet" })}>beautiful&nbsp;</span>
           <br />
           <span className={title()}>
             websites regardless of your design experience.
           </span>
-          <div className={subtitle({ class: "mt-4" })}>
+          <div className={subtitle({ class: "mt-4 text-white" })} >
             Beautiful, fast, and modern React UI library.
           </div>
         </div>
