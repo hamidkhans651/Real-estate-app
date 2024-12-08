@@ -1,23 +1,30 @@
-import { integer, pgTable, serial, text, timestamp,boolean } from 'drizzle-orm/pg-core';
+import { integer, pgTable, serial, text, timestamp } from 'drizzle-orm/pg-core';
 
-export const userstable = pgTable('users_table', {
-  id: serial("id").primaryKey(), // Auto-incrementing primary key
-  username: text("username").notNull().unique(), // Unique username
-  email: text("email").notNull().unique(), // Unique email
-  password: text("password").notNull(), // Hashed password
-  isVerified: boolean("is_verified").default(false), // Corrected boolean field
-  isAdmin: boolean("is_admin").default(false), // Corrected boolean field
-  forgotPasswordToken: text("forgot_password_token"), // Optional field
-  forgotPasswordTokenExpiry: timestamp("forgot_password_token_expiry"), // Optional field
-  verifyToken: text("verify_token"), // Optional field
-  verifyTokenExpiry: timestamp("verify_token_expiry"), // Optional field
+// Define the User table schema
+export const usersTable = pgTable('users_table', {
+  id: serial('id').primaryKey(),  // Auto-incrementing ID
+  name: text('name').notNull(),   // User's name
+  email: text('email').notNull().unique(),  // User's email (unique)
+  password: text('password').notNull(),  // Hashed password (stored as text)
 });
 
-;
+// Define the Post table schema
+export const postsTable = pgTable('posts_table', {
+  id: serial('id').primaryKey(), // Auto-incrementing ID
+  title: text('title').notNull(), // Title of the post
+  content: text('content').notNull(), // Content of the post
+  userId: integer('user_id')
+    .notNull()
+    .references(() => usersTable.id, { onDelete: 'cascade' }), // Foreign key to User
+  createdAt: timestamp('created_at').notNull().defaultNow(), // Timestamp when post is created
+  updatedAt: timestamp('updated_at')
+    .notNull()
+    .$onUpdate(() => new Date()), // Timestamp when post is updated
+});
 
+// Types for inserts and selects
+export type InsertUser = typeof usersTable.$inferInsert;
+export type SelectUser = typeof usersTable.$inferSelect;
 
-
-
-export type InsertUser = typeof userstable.$inferInsert;
-export type SelectUser = typeof userstable.$inferSelect;
-
+export type InsertPost = typeof postsTable.$inferInsert;
+export type SelectPost = typeof postsTable.$inferSelect;

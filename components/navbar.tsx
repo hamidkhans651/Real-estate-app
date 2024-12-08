@@ -49,9 +49,9 @@ export const Navbar = () => {
             <p className="font-bold text-inherit">ACME</p>
           </NextLink>
         </NavbarBrand>
-        
+
         {/* Navbar Links (Desktop) */}
-        <ul className="hidden lg:flex gap-4 justify-start ml-2">
+        <ul className="hidden lg:flex gap-9 justify-center ml-80">
           {siteConfig.navItems.map((item) => (
             <NavbarItem key={item.href}>
               <NextLink
@@ -76,10 +76,7 @@ export const Navbar = () => {
           <ThemeSwitch />
         </NavbarItem>
 
-        {/* Search Input (Desktop) */}
-        <NavbarItem className="hidden lg:flex">
-          {searchInput}
-        </NavbarItem>
+
       </NavbarContent>
 
       {/* Mobile View */}
@@ -104,8 +101,8 @@ export const Navbar = () => {
                   index === 2
                     ? "primary"
                     : index === siteConfig.navMenuItems.length - 1
-                    ? "danger"
-                    : "foreground"
+                      ? "danger"
+                      : "foreground"
                 }
                 href={item.href}
               >
