@@ -43,6 +43,13 @@
       "when": 1733677087686,
       "tag": "0005_natural_hairball",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1734161816977,
+      "tag": "0006_good_shatterstar",
+      "breakpoints": true
     }
   ]
 }

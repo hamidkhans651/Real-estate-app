@@ -30,8 +30,7 @@ export const propertiesTable = pgTable('properties', {
   location: text('location').notNull(),
   price: text('price').notNull(),
   description: text('description').notNull(),
-  createdAt: timestamp('created_at').notNull().defaultNow(),
-  updatedAt: timestamp('updated_at').notNull().$onUpdate(() => new Date()),
+
 });
 
 

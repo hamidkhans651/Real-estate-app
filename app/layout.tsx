@@ -32,6 +32,7 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+
   return (
     <html suppressHydrationWarning lang="en">
       <head />
@@ -46,7 +47,9 @@ export default function RootLayout({
           <Navbar />
 
           {/* Main content */}
-          <main>{children}</main>
+          <main>{children}
+
+          </main>
 
           {/* Footer */}
           <Footer />
