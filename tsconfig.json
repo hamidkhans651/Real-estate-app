@@ -23,6 +23,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "components/Sections/Mid.tsx", "app/Properties/icons/HeartIcon.jsx", "app/Properties/page.tsx", "next.config.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "components/Sections/Mid.tsx", "app/Properties/icons/HeartIcon.jsx", "app/Properties/page.tsx", "next.config.js", "components/PropertyForm.jsx"],
   "exclude": ["node_modules"]
 }

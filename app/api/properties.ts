@@ -1,25 +1,38 @@
-// // /pages/api/properties.ts
+// pages/api/properties.ts
+import { NextApiRequest, NextApiResponse } from 'next';
+import { db } from '@/db/db';
+import { propertiesTable } from '@/db/schema';
 
-// import { NextApiRequest, NextApiResponse } from "next";
-// import {connect} from "../db/drizzle"; // Import the Drizzle instance
-// import { eq } from "drizzle-orm"; // Import the equality condition
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+  if (req.method === 'POST') {
+    try {
+      const { name, location, price, description } = req.body;
 
-// // Define the model/schema for properties
-// const Property = db.table("properties", {
-//   id: connect.integer("id").primary(),
-//   seller: db.text("seller"),
-//   img: db.text("img"),
-//   price: db.text("price"),
-//   address: db.text("address"),
-//   bed: db.text("bed"),
-// });
+      // Insert property into the database
+      const result = await db
+        .insert(propertiesTable)
+        .values({
+          name,
+          location,
+          price,
+          description,
+        })
+        .returning();
 
-// // API handler to fetch all properties
-// export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-//   try {
-//     const properties = await db.select().from(Property).all(); // Fetch all properties
-//     res.status(200).json(properties);
-//   } catch (error) {
-//     res.status(500).json({ message: "Error fetching properties", error });
-//   }
-// }
+      return res.status(201).json(result);
+    } catch (error) {
+      console.error('Error inserting property:', error);
+      return res.status(500).json({ error: 'Internal Server Error' });
+    }
+  } else if (req.method === 'GET') {
+    try {
+      const properties = await db.select().from(propertiesTable);
+      return res.status(200).json(properties);
+    } catch (error) {
+      console.error('Error fetching properties:', error);
+      return res.status(500).json({ error: 'Internal Server Error' });
+    }
+  } else {
+    return res.status(405).json({ error: 'Method Not Allowed' });
+  }
+}

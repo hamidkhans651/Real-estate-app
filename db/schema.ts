@@ -1,4 +1,4 @@
-import { integer, pgTable, serial, text, timestamp } from 'drizzle-orm/pg-core';
+import { integer, pgTable, decimal, serial, text, timestamp } from 'drizzle-orm/pg-core';
 
 // Define the User table schema
 export const usersTable = pgTable('users_table', {
@@ -21,6 +21,23 @@ export const postsTable = pgTable('posts_table', {
     .notNull()
     .$onUpdate(() => new Date()), // Timestamp when post is updated
 });
+
+// db/schema.ts
+
+export const propertiesTable = pgTable('properties', {
+  id: serial('id').primaryKey(), // id should be integer or serial
+  name: text('name').notNull(),
+  location: text('location').notNull(),
+  price: text('price').notNull(),
+  description: text('description').notNull(),
+  createdAt: timestamp('created_at').notNull().defaultNow(),
+  updatedAt: timestamp('updated_at').notNull().$onUpdate(() => new Date()),
+});
+
+
+export type InsertProperty = typeof propertiesTable.$inferInsert;
+export type SelectProperty = typeof propertiesTable.$inferSelect;
+
 
 // Types for inserts and selects
 export type InsertUser = typeof usersTable.$inferInsert;
