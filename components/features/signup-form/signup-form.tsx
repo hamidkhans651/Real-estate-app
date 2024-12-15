@@ -1,5 +1,7 @@
 "use client";
 
+import { FormProvider, } from "react-hook-form";
+
 import Link from "next/link";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -36,15 +38,30 @@ export default function SignupForm() {
     },
   });
 
+
+
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsLoading(true);
-    await createUser(values);
-    form.reset();
-    setIsLoading(false);
-  }
+
+    try {
+        await createUser(values);
+        form.reset();
+        // Optionally, redirect to the login page on success
+    } catch (error: any) {
+        if (error.message === "Email or username already exists.") {
+            form.setError("email", { message: "Email already exists" });
+            form.setError("username", { message: "Username already exists" });
+        } else {
+            console.error(error); // Handle other server errors
+        }
+    } finally {
+        setIsLoading(false);
+    }
+}
+
 
   return (
-    <Form {...form}>
+    <FormProvider {...form} >
       <form onSubmit={form.handleSubmit(onSubmit)}>
         <div className="grid gap-4">
           <div className="grid gap-4">
@@ -110,6 +127,5 @@ export default function SignupForm() {
           </Link>
         </div>
       </form>
-    </Form>
-  );
+      </FormProvider>  );
 }
