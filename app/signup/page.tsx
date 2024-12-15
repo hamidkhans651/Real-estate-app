@@ -1,60 +1,29 @@
-import React from 'react'
 import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import Link from "next/link"
+} from "@/components/ui/card";
+import { SignupForm } from "@/components/features";
 
-import { Button } from "@/components/ui/button"
 
-const Page = () => {
+export default function Signup() {
   return (
-    <div className='flex justify-center items-center h-dvh'>
-      <Card>
+    <div className="flex min-h-svh flex-col items-center justify-center gap-6 bg-muted p-6 md:p-10">
+
+      <Card className="mx-auto max-w-sm">
         <CardHeader>
-          <CardTitle>Real estate</CardTitle>
-          <CardDescription>Card Description</CardDescription>
+          <CardTitle className="text-xl">Sign Up</CardTitle>
+          <CardDescription>
+            Enter your information to create an account
+          </CardDescription>
         </CardHeader>
-        <CardContent >
-
-          <form action="" className='flex flex-col gap-4'>
-            <Input type="email" placeholder="Email" />
-            <Input type="username" placeholder="username" />
-            <Input type="password" placeholder="password" />
-            <Button asChild>
-              <Link href="/login">signup</Link>
-            </Button>
-          </form>
-
+        <CardContent>
+          <SignupForm />
         </CardContent>
-        <CardFooter className='flex flex-col gap-4'>
-          {/* <span>or</span>
-                    <form action="" >
-                        <Button type='submit' variant={'outline'}>
-
-                            <Mail />  with Google
-                        </Button>
-                    </form> */}
-
-          <span>Don't have an account?
-            <Link className='mt-2' href="/login"
-            > login
-            </Link>
-          </span>
-
-
-
-        </CardFooter>
       </Card>
+    </div>
 
-
-    </div >
-  )
+  );
 }
-
-export default Page

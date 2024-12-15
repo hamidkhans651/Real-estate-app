@@ -2,10 +2,8 @@ import "@/styles/globals.css";
 import { Metadata, Viewport } from "next";
 import clsx from "clsx";
 import { Providers } from "./providers";
-import Footer from "@/components/Footer";
 import { siteConfig } from "@/config/site";
 import { fontSans } from "@/config/fonts";
-import { Navbar } from "@/components/navbar";
 
 // Set metadata for light and dark theme color scheme
 export const metadata: Metadata = {
@@ -44,7 +42,6 @@ export default function RootLayout({
       >
         <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
           {/* Add your Navbar */}
-          <Navbar />
 
           {/* Main content */}
           <main>{children}
@@ -52,7 +49,6 @@ export default function RootLayout({
           </main>
 
           {/* Footer */}
-          <Footer />
         </Providers>
       </body>
     </html>

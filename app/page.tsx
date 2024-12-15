@@ -3,6 +3,10 @@ import { SearchIcon } from "@/components/icons";
 import { Kbd } from "@nextui-org/kbd";
 import { Input } from "@nextui-org/input";
 import Midsections from "../components/Midsections";
+import { Navbar } from "@/components/navbar";
+import Footer from "@/components/Footer";
+
+
 
 export default function Home() {
   const searchInput = (
@@ -25,6 +29,8 @@ export default function Home() {
   );
   return (
     <main className="w-full min-h-screen">
+      <Navbar />
+
       {/* Section with background image and text */}
       <section
         className="w-full h-screen flex flex-col items-center justify-center gap-4 bg-cover bg-center"
@@ -48,6 +54,8 @@ export default function Home() {
 
       {/* Midsections or additional content below the hero */}
       <Midsections />
+      <Footer />
+
     </main>
   );
 }

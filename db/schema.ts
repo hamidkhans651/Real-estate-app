@@ -1,4 +1,4 @@
-import { integer, pgTable, decimal, serial, text, timestamp } from 'drizzle-orm/pg-core';
+import { integer, pgTable, decimal, serial, text, timestamp, uuid } from 'drizzle-orm/pg-core';
 
 // Define the User table schema
 export const usersTable = pgTable('users_table', {
@@ -6,7 +6,20 @@ export const usersTable = pgTable('users_table', {
   name: text('name').notNull(),   // User's name
   email: text('email').notNull().unique(),  // User's email (unique)
   password: text('password').notNull(),  // Hashed password (stored as text)
+  createdAt: timestamp('created_at').notNull().defaultNow(), // Timestamp when post is created
+  updatedAt: timestamp('updated_at')
+    .notNull()
+    .$onUpdate(() => new Date()), // Timestamp when post is updated
 });
+export const users = pgTable('users', {
+  id: uuid('id').primaryKey().defaultRandom(), // Auto-incrementing ID
+  email: text('email').notNull().unique(), // User's name
+  username: text("username").notNull().unique(),
+  password: text('password').notNull(),  // Hashed password (stored as text)
+  createdAt: timestamp('created_at').notNull().defaultNow(), // Timestamp when post is created
+ 
+});
+
 
 // Define the Post table schema
 export const postsTable = pgTable('posts_table', {
