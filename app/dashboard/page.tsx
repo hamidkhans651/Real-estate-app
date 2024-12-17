@@ -1,99 +1,52 @@
-'use client'
+import { AppSidebar } from "@/components/app-sidebar"
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb"
+import { Separator } from "@/components/ui/separator"
+import {
+  SidebarInset,
+  SidebarProvider,
+  SidebarTrigger,
+} from "@/components/ui/sidebar"
 
-import React, { useState, useEffect } from 'react';
-
-const page = () => {
-  const [property, setProperty] = useState({
-    name: '',
-    location: '',
-    price: '',
-    description: ''
-  });
-  const [properties, setProperties] = useState<any[]>([]); // State for properties list
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setProperty((prev) => ({
-      ...prev,
-      [name]: value
-    }));
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-
-    try {
-      const response = await fetch('/app/api/properties', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(property),
-      });
-
-      if (response.ok) {
-        alert('Property added successfully!');
-
-        // Refetch the properties
-        await fetchProperties();
-      } else {
-        throw new Error('Failed to add property');
-      }
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  const fetchProperties = async () => {
-    const response = await fetch('/api/properties');
-    const data = await response.json();
-    setProperties(data);
-  };
-
-  // Fetch properties when the page loads
-  useEffect(() => {
-    fetchProperties();
-  }, []);
-
+export default function Page() {
   return (
-    <div>
-      <h1>Dashboard</h1>
-
-      {/* Add property form */}
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Name</label>
-          <input type="text" name="name" value={property.name} onChange={handleChange} />
+    <SidebarProvider>
+      <AppSidebar />
+      <SidebarInset>
+        <header className="flex h-16 shrink-0 items-center gap-2 border-b">
+          <div className="flex items-center gap-2 px-3">
+            <SidebarTrigger />
+            <Separator orientation="vertical" className="mr-2 h-4" />
+            <Breadcrumb>
+              <BreadcrumbList>
+                <BreadcrumbItem className="hidden md:block">
+                  <BreadcrumbLink href="#">
+                    Building Your Application
+                  </BreadcrumbLink>
+                </BreadcrumbItem>
+                <BreadcrumbSeparator className="hidden md:block" />
+                <BreadcrumbItem>
+                  <BreadcrumbPage>Data Fetching</BreadcrumbPage>
+                </BreadcrumbItem>
+              </BreadcrumbList>
+            </Breadcrumb>
+          </div>
+        </header>
+        <div className="flex flex-1 flex-col gap-4 p-4">
+          <div className="grid auto-rows-min gap-4 md:grid-cols-3">
+            <div className="aspect-video rounded-xl bg-muted/50" />
+            <div className="aspect-video rounded-xl bg-muted/50" />
+            <div className="aspect-video rounded-xl bg-muted/50" />
+          </div>
+          <div className="min-h-[100vh] flex-1 rounded-xl bg-muted/50 md:min-h-min" />
         </div>
-        <div>
-          <label>Location</label>
-          <input type="text" name="location" value={property.location} onChange={handleChange} />
-        </div>
-        <div>
-          <label>Price</label>
-          <input type="text" name="price" value={property.price} onChange={handleChange} />
-        </div>
-        <div>
-          <label>Description</label>
-          <input type="text" name="description" value={property.description} onChange={handleChange} />
-        </div>
-        <button type="submit">Add Property</button>
-      </form>
-
-      {/* Property List */}
-      <h2>Property List</h2>
-      <ul>
-        {properties.map((property, index) => (
-          <li key={index}>
-            <h3>{property.name}</h3>
-            <p>{property.location}</p>
-            <p>{property.price}</p>
-            <p>{property.description}</p>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-};
-
-export default page;
+      </SidebarInset>
+    </SidebarProvider>
+  )
+}
