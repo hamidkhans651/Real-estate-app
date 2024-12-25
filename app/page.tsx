@@ -29,7 +29,7 @@ export default function Home() {
   );
   return (
     <main className="w-full min-h-screen">
-      <Navbar />
+            <Navbar />
 
       {/* Section with background image and text */}
       <section
@@ -48,14 +48,20 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Your search input */}
+        /* Your search input */
         <div className="mt-8">{searchInput}</div>
       </section>
 
-      {/* Midsections or additional content below the hero */}
+      /* Midsections or additional content below the hero */
       <Midsections />
       <Footer />
 
     </main>
+
+    // <div className="bg-white h-screen">
+    //   this is home page
+
+    // </div>
+
   );
 }

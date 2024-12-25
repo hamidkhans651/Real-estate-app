@@ -13,38 +13,27 @@ export const siteConfig = {
       href: "/Properties",
     },
     {
+      label: "Dashboard",
+      href: "/dashboard",
+    },
+    {
+      label: "Contact",
+      href: "/blog",
+    },
+    {
       label: "About",
       href: "/about",
     },
-
+    {
+      label: "Login",
+      href: "/login",
+    },
   ],
-  // navItemsClerk: [
-  //   {
-  //     label: "Home",
-  //     href: "/",
-  //   },
-  //   {
-  //     label: "Properties",
-  //     href: "/Properties",
-  //   },
-  //   {
-  //     label: "Dashboard",
-  //     href: "/dashboard",
-  //   },
-
-  //   {
-  //     label: "About",
-  //     href: "/about",
-  //   },
-
-  // ],
   navMenuItems: [
     {
       label: "Home",
       href: "/",
     },
-
-
     {
       label: "Dashboard",
       href: "/dashboard",
@@ -74,8 +63,8 @@ export const siteConfig = {
       href: "/logout",
     },
     {
-      label: "Sign-in",
-      href: "/sign-in",
+      label: "login",
+      href: "/login",
     },
   ],
   links: {

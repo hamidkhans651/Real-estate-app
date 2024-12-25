@@ -3,8 +3,8 @@ import { Metadata, Viewport } from "next";
 import clsx from "clsx";
 import { Providers } from "./providers";
 import { siteConfig } from "@/config/site";
-import { ClerkProvider, SignInButton, SignedIn, SignedOut, UserButton } from '@clerk/nextjs'
-
+import { ClerkProvider } from '@clerk/nextjs'
+import { Navbar } from "@/components/navbar";
 import { fontSans } from "@/config/fonts";
 
 // Set metadata for light and dark theme color scheme
@@ -36,31 +36,32 @@ export default function RootLayout({
   return (
     <ClerkProvider>
 
-    
-    <html suppressHydrationWarning lang="en">
-      <head />
 
-      <header>
-         
-          </header>
-      <body
-        className={clsx(
-          "min-h-screen bg-background font-sans antialiased",
-          fontSans.variable
-        )}
-      >
-        <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
-          {/* Add your Navbar */}
+      <html suppressHydrationWarning lang="en">
+        <head />
 
-          {/* Main content */}
-          <main>{children}
+        <header>
 
-          </main>
+        </header>
+        <body
+          className={clsx(
+            "min-h-screen bg-background font-sans antialiased",
+            fontSans.variable
+          )}
+        >
+          <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
+            {/* Add your Navbar */}
+            
 
-          {/* Footer */}
-        </Providers>
-      </body>
-    </html>
+            {/* Main content */}
+            <main>{children}
+
+            </main>
+
+            {/* Footer */}
+          </Providers>
+        </body>
+      </html>
     </ClerkProvider>
 
   );
