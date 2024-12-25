@@ -3,6 +3,8 @@ import { Metadata, Viewport } from "next";
 import clsx from "clsx";
 import { Providers } from "./providers";
 import { siteConfig } from "@/config/site";
+import { ClerkProvider, SignInButton, SignedIn, SignedOut, UserButton } from '@clerk/nextjs'
+
 import { fontSans } from "@/config/fonts";
 
 // Set metadata for light and dark theme color scheme
@@ -32,8 +34,15 @@ export default function RootLayout({
 }) {
 
   return (
+    <ClerkProvider>
+
+    
     <html suppressHydrationWarning lang="en">
       <head />
+
+      <header>
+         
+          </header>
       <body
         className={clsx(
           "min-h-screen bg-background font-sans antialiased",
@@ -52,5 +61,7 @@ export default function RootLayout({
         </Providers>
       </body>
     </html>
+    </ClerkProvider>
+
   );
 }

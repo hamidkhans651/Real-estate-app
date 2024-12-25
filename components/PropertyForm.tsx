@@ -4,6 +4,8 @@
 
 import React, { useState } from 'react';
 
+
+
 const DashboardPage = () => {
   const [property, setProperty] = useState({
     name: '',
@@ -46,7 +48,7 @@ const DashboardPage = () => {
   };
 
   return (
-    <div>
+    <div className='bg-green-200'>
       <h1>Dashboard</h1>
 
       <form onSubmit={handleSubmit}>
@@ -90,7 +92,7 @@ const DashboardPage = () => {
             required
           />
         </div>
-        <button type="submit">Add Property</button>
+        <button className='rounded-md hover:border-l-amber-400' type="submit">Add Property</button>
       </form>
     </div>
   );
