@@ -48,11 +48,11 @@ export default function Home() {
           </div>
         </div>
 
-        /* Your search input */
+        {/* /* Your search input */ }
         <div className="mt-8">{searchInput}</div>
       </section>
 
-      /* Midsections or additional content below the hero */
+      {/* /* Midsections or additional content below the hero */}
       <Midsections />
       <Footer />
 
